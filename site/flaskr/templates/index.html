@@ -1,0 +1,237 @@
+<!--source qui a aidé à faire les graphiques = https://travishorn.com/stacked-bar-chart-with-chart-js-846ebdf11c4e-->
+<!-- le lien vers la source du template de cette interface se trouve tout en bas du code ou tout en bas de la page web-->
+<!-- Interface en html de notre site web avec tous les graphies fait avec chart.js intégrés directement dedans -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    body {font-family: "Times New Roman", Georgia, Serif;}
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Playfair Display";
+      letter-spacing: 5px;
+    }
+    </style>
+  </head>
+  <body>
+
+  <!-- Navigation bar (tout en haut) -->
+  <div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="#home" class="w3-bar-item w3-button">La Ferme des Trois Chênes</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="#Bienvenue" class="w3-bar-item w3-button">Bienvenue</a>
+        <a href="#Question1" class="w3-bar-item w3-button">Question1</a>
+        <a href="#Question2" class="w3-bar-item w3-button">Question2</a>
+        <a href="#Question3" class="w3-bar-item w3-button">Question3</a>
+        <a href="#Question4" class="w3-bar-item w3-button">Question4</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+    <img class="w3-image" src="https://media1.ledevoir.com/images_galerie/nwd_678206_522306/image.jpg" alt="Photo De Vaches" width="1600" height="800">
+    <div class="w3-display-top-left w3-padding-large ">
+      <h1 class="w3-xxlarge">La Ferme des Trois Chênes</h1>
+    </div>
+  </header>
+
+  <!-- Contenu de la page -->
+  <div class="w3-content" style="max-width:1100px">
+
+    <!-- Bienvenue Section -->
+    <div class="w3-row w3-padding-64" id="Bienvenue">
+      <div class="w3-col m6 w3-padding-large w3-hide-small">
+      <img src="https://assets.letemps.ch/sites/default/files/media/2016/08/17/vache.jpg" class="w3-round w3-image " alt="Table Setting" width="600" height="750">
+      </div>
+
+      <div class="w3-col m6 w3-padding-large">
+        <h1 class="w3-center">Bienvenue</h1><br>
+        <h5 class="w3-center">Une ferme avec des valeurs</h5>
+        <p class="w3-large">Mr. et Mme. Verhaeghe de la Ferme des Trois Chênes sont des éleveurs passionnés.
+              Ils souhaitent s'occuper au mieux de leurs vaches, afin de garantir leur bien-être et par la même occasion maximiser leurs profits.
+              C'est donc tout naturellement que M. et Mme. Verghaehe nous ont contactés, dans le but d'avoir plus de précisions à propos de leur ferme.
+              Ils se posaient quelques questions concernant des sujets variés, comme par exemple:
+              Est-ce vrai qu'il y a plus de naissances lors des pleines lunes?
+              Y a-t-il une famille de vaches particulière chez laquelle les veaux meurent plus souvent prématurément?
+              Y a-t-il un moment particulier durant l’année lors duquel, il y a plus de cas de veaux mort-nés?
+              Ou encore, combien de vêlages y a-t-il eu par an ces dernières années?
+              Nous nous efforcerons de répondre à toutes ces questions sur cette page!
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Question1 -->
+    <div class="w3-container w3-padding-64" id="Question1">
+      <h1>Question1</h1><br>
+      <h4>Est-ce vrai qu'il y a plus de naissances lors des pleines lunes?</h4>
+      <p>Une croyance populaire chez certains éleveurs est que les naissances arrivent plus souvent à la pleine lune.
+          Nous allons voir si cela est véridique ou non. Ce graphique nous donne le pourcentage de vêlages par jour du cycle lunaire. Le premier et le deuxième pourcentage sont des jours de pleines lunes, le troisième représente le premier jour du cycle lunaire, etc.
+
+          Conclusion: Non, il n'y a pas plus de vêlages lors de la pleine lune comparé aux autres jours du cycle. Le nombre de naissances recensées sur les 30 dernières années nous permettent d'en arriver à cette conclusion.
+          </form>
+
+    </div>
+    <hr>
+
+
+  <!-- Graphique du 1.1 (Question1)-->
+
+  <canvas id="chart1"></canvas>
+  <script>
+  var ctx = document.getElementById('chart1');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28'],
+    datasets: [{
+      label: 'Pourcentage de vêlages par jour du cycle lunaire sur les 30 dernières années ',
+      data: {{PourcentageVelagePleineLune}},
+      backgroundColor:'rgb(10,70,100,0.6)' // turquoise
+    },
+    ]},
+    options: {scales: {
+      xAxes: [{ stacked: true }],
+      yAxes: [{ stacked: true }]
+    }}
+  });
+  </script>
+
+
+    <!-- Question2 -->
+
+    <div class="w3-container w3-padding-64" id="Question2">
+      <h1>Question2</h1><br>
+      <h4>Y a-t-il une famille de vaches chez laquelle les veaux meurent plus souvent prématurément?</h4>
+      <p>En effet, il y a parfois des veaux qui meurent dans leurs premières semaines de vie, on parle alors de décès prématurés. Cela est très triste, et nous voulons minimiser ce genre de cas, c'est pourquoi nous essayons d'en trouver la cause.
+          Conclusion : La famille 11 ayant le plus de décès prématurés, nous pouvons en conclure qu'elle est la plus à risques
+  pour les prochaines naissances. Nous surveillerons donc attentivement l'évolution de celles-ci
+  afin d'identifier les possibles causes de ces décès prématurés.
+
+      </form>
+        </div>
+  <hr>
+
+
+  <!-- Graphique du 4.2. (Question2)-->
+
+  <canvas id="chart"></canvas>
+  <script>
+  var ctx = document.getElementById('chart');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {labels: {{f|safe}},
+    datasets: [{
+      label: 'Nombres de vaches mortes prématurément',
+      data: {{m}},
+      backgroundColor:'rgb(100,0,100,0.8)' // violet
+    },
+    {
+      label: 'Nombre de vaches vivantes',
+      data: {{v}},
+      backgroundColor: 'rgb(255,159,64,0.8)' // orange
+    }
+
+    ]},
+    options: {scales: {
+      xAxes: [{ stacked: true }],
+      yAxes: [{ stacked: true }]
+    }}
+  });
+  </script>
+
+
+    <!-- Question3 -->
+
+    <div class="w3-container w3-padding-64" id="Question3">
+      <h1>Question3</h1><br>
+      <h4>Y a-t-il un moment particulier durant l’année lors duquel, il y a plus de cas de veaux mort-nés?</h4>
+      <p>Il arrive malheureusement qu’un veau soit mort-né. Cela veut dire qu'au moment de sa naissance, il est déjà mort.
+          En regardant combien de veaux meurent chaque mois, nous pourrons en identifier la cause ou les causes, comme la température
+  au moment de la naissance par exemple.
+          Conclusion: Les mois ayant le moins de mort prématurées sont Mars, Juin, Octobre et Décembre.
+  La saison ne modifie donc pas le nombre de veaux mort-nés.
+  Nous allons tout faire pour limiter ces tristes naissances dans notre ferme des Trois Chênes!
+
+
+      </form>
+    </div>
+    <hr>
+
+  <!-- Graphique du 3.1. (Question3)-->
+
+  <canvas id="chart2"></canvas>
+  <script>
+  var ctx = document.getElementById('chart2');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+    datasets: [{
+      label: 'Nombre de vaches mortes prématurément',
+      data: {{n}},
+      borderColor: 'rgb(29,44,47)',
+      backgroundColor: 'rgba(24,112,65,0.5)'
+    },
+    ]},
+    options: {scales: {
+      xAxes: [{ stacked: true }],
+      yAxes: [{ stacked: true }]
+    }}
+  });
+  </script>
+
+
+    <!-- Question4 -->
+    <div class="w3-container w3-padding-64" id="Question4">
+      <h1>Question4</h1><br>
+      <h4>Combien de vêlages y a-t-il eu par an ces dernières années? </h4>
+      <p>Une vache aura son premier vêlage en moyenne à l’âge de 2 ans.
+          Avant ce premier vêlage, elle n’est pas encore économiquement utile, puisqu’elle ne produit pas encore de lait.
+          Une exploitation cherche généralement à garder ses vaches le plus longtemps possible, pour maximiser le nombre de lactations (une lactation correspond à un vêlage).
+          Conclusion: 2019 aura été une année particulièrement riche en vêlages, mais également en morts prématurées,
+  ce qui explique la baisse drastique de naissances remarquée en 2020, suite à une épidémie difficile à contrôler...
+  Mais heureusement, nos magnifiques vaches se portent mieux que jamais dans notre ferme à l'heure actuelle!
+
+      </form>
+    </div>
+    <hr>
+
+  <!-- Graphique du 2. (Question4)-->
+  <canvas id="chart3"></canvas>
+  <script>
+  var ctx = document.getElementById('chart3');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {labels: {{VelageX|safe}},
+    datasets: [{
+      label: 'Nombre de vêlages par an',
+      data: {{VelageS}},
+      borderColor: 'rgb(105,31,105)',
+        backgroundColor: 'rgb(157,54,54,0.8)'
+    },
+
+    ]},
+    options: {scales: {
+      xAxes: [{ stacked: true }],
+      yAxes: [{ stacked: true }]
+    }}
+  });
+  </script>
+
+  <!-- fin de la page avec le contenu -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-center w3-light-grey w3-padding-32">
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  </footer>
+  <!--lien vers le site du template se trouve juste au dessus-->
+  </body>
+</html>
